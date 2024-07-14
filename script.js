@@ -20,15 +20,21 @@ function emptyBorder(){
 
 inputRadius.addEventListener("input",()=>{
     caixa.style.borderRadius = `${inputRadius.value}px`
+    let valueInput = inputRadius.value
+    if(valueInput.includes('%')){
+        caixa.style.borderRadius = valueInput
+    }
     emptyBorder()
 })
 
-inputRadius.addEventListener('keydown',(evt)=>{
-    if(evt.key === '%'){
-        caixa.style.borderRadius = `${inputRadius.value}%`
-        emptyBorder()
-    }
-})
+// inputRadius.addEventListener('keydown',(evt)=>{
+//     let value = inputRadius.value
+//     console.log(value)
+//     if(value.includes('%')){
+//         caixa.style.borderRadius = value
+//         emptyBorder()
+//     }
+// })
 
 // const color1 = 'blue'
 // const color2 = 'red'
@@ -66,4 +72,28 @@ heightInput.addEventListener("input",()=>{
         alert('VALOR INAPROPRIADO')
     }
 })
+
+function queryInput768(){
+    widthInput.setAttribute("placeholder",'Width(Largura) MAX: 350')
+    heightInput.setAttribute("placeholder","Height(Altura) MAX: 200")
+
+    
+}
+
+function queryInputNormal(){
+    widthInput.setAttribute("placeholder",'Width(Largura) MAX: 450')
+    heightInput.setAttribute("placeholder","Height(Altura) MAX: 300")
+
+}
+
+const matchesWindow = window.matchMedia("(max-width: 768px)")
+
+matchesWindow.addEventListener('change',() => {
+    if(matchesWindow.matches){
+        queryInput768()
+    } else{
+       queryInputNormal()
+    }
+})
+
 
