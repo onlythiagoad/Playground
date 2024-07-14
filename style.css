@@ -68,7 +68,12 @@ input{
 
 @media screen and (max-width: 768px){
     main{
-        width: 400px;
+        width: 350px;
+        height: 550px;
+    }
+    .cubo{
+        width: 150px;
+        height: 150px;
     }
 }
 
